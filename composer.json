@@ -1,0 +1,28 @@
+{
+    "name": "laralum/routes",
+    "description": "Routes module for laralum",
+    "require": {
+		"laralum/laralum": "1.*"
+	},
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erik Campobadal",
+            "email": "soc@erik.cat"
+        },
+        {
+            "name": "Aitor Riba",
+            "email": "contact@aitorriba.com"
+        },
+        {
+            "name": "Krishan König",
+            "email": "krishan.koenig@googlemail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Laralum\\Routes\\": "./src"
+        }
+    },
+    "minimum-stability": "dev"
+}

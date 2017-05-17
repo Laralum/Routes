@@ -1,0 +1,9 @@
+{
+    "items": [
+        {
+            "permission" : "laralum::routes.access",
+            "trans": "laralum_routes::general.routes",
+            "route": "laralum::routes.index"
+        }
+    ]
+}
