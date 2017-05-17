@@ -2,9 +2,9 @@
 
 namespace Laralum\Routes;
 
-use Laralum\CRUD\Models\Route;
+use Laralum\Routes\Models\Route;
 use Illuminate\Support\Facades\Gate;
-use Laralum\CRUD\Policies\RoutePolicy;
+use Laralum\Routes\Policies\RoutePolicy;
 use Illuminate\Support\ServiceProvider;
 use Laralum\Permissions\PermissionsChecker;
 

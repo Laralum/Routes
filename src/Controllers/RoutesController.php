@@ -2,6 +2,7 @@
 
 namespace Laralum\Routes\Controllers;
 
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Laralum\Routes\Models\Route;
@@ -40,9 +41,7 @@ class RoutesController extends Controller
      */
     public function routes()
     {
-        collect($this->routes)->map(function ($route) {
-            dd($route->getName());
-        })->all();
+        $routes = $this->getAll();
 
         return view('laralum_routes::routes', ['routes' => $routes]);
     }
@@ -69,14 +68,14 @@ class RoutesController extends Controller
      */
     public function getRouteInformation(BaseRoute $route)
     {
-        return [
+        return new Route([
             'host'   => $route->domain(),
             'method' => implode('|', $route->methods()),
             'uri'    => $route->uri(),
             'name'   => $route->getName(),
             'action' => $route->getActionName(),
             'middleware' => $this->getRouteMiddleware($route),
-        ];
+        ]);
     }
 
     /**

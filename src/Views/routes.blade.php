@@ -29,7 +29,7 @@
                                 <tbody>
                                     @forelse($routes as $route)
                                         <tr>
-                                            <td>{{ $route }}</td>
+                                            <td>{{ $route->name }}</td>
                                             <td class="uk-table-shrink">
                                                 {{-- <div class="uk-button-group">
                                                     <a class="uk-button uk-button-default uk-button-small" href="{{ route('laralum::CRUD.row.index', ['table' => $table]) }}">
