@@ -11,8 +11,7 @@
 @section('content')
     <div class="uk-container uk-container-large">
         <div uk-grid>
-            <div class="uk-width-1-5@l uk-width-1-1@m"></div>
-            <div class="uk-width-3-5@l uk-width-1-1@m">
+            <div class="uk-width-1-1">
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-header">
                         @lang('laralum_routes::general.routes')
@@ -22,22 +21,23 @@
                             <table class="uk-table uk-table-striped">
                                 <thead>
                                     <tr>
-                                        <th>@lang('laralum_CRUD::general.name')</th>
-                                        <th>second row{{-- @lang('laralum_CRUD::general.actions') --}}</th>
+                                        <th>@lang('laralum_routes::general.name')</th>
+                                        <th>@lang('laralum_routes::general.method')</th>
+                                        <th>@lang('laralum_routes::general.URI')</th>
+                                        <th>@lang('laralum_routes::general.action')</th>
+                                        <th>@lang('laralum_routes::general.middleware')</th>
+                                        <th>@lang('laralum_routes::general.host')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($routes as $route)
                                         <tr>
                                             <td>{{ $route->name }}</td>
-                                            <td class="uk-table-shrink">
-                                                {{-- <div class="uk-button-group">
-                                                    <a class="uk-button uk-button-default uk-button-small" href="{{ route('laralum::CRUD.row.index', ['table' => $table]) }}">
-                                                        @lang('laralum_CRUD::general.view')
-                                                    </a>
-                                                </div> --}}
-                                                Some Route
-                                            </td>
+                                            <th>{{ $route->method }}</th>
+                                            <th>{{ $route->uri }}</th>
+                                            <th>{{ $route->action }}</th>
+                                            <th>{{ $route->middleware }}</th>
+                                            <th>{{ $route->host }}</th>
                                         </tr>
                                     @empty
                                         <tr>
@@ -48,10 +48,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        @include('laralum::layouts.pagination', ['paginator' => $routes])
                     </div>
                 </div>
             </div>
-            <div class="uk-width-1-5@l uk-width-1-1@m"></div>
         </div>
     </div>
 @endsection

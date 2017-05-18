@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Route extends Model
 {
-    protected $guarded = [];
+    /**
+     * The guarded attributes on the model.
+     *
+     * @var array
+     */
+    protected $guarded = ['Id'];
 }

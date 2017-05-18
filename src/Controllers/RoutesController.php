@@ -2,36 +2,26 @@
 
 namespace Laralum\Routes\Controllers;
 
-use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Router;
+use Laralum\Routes\RoutesInfo;
 use Laralum\Routes\Models\Route;
 use App\Http\Controllers\Controller;
-use Illuminate\Routing\Route as BaseRoute;
 
 class RoutesController extends Controller
 {
     /**
-     * The router instance.
+     * The RoutesInfo instance.
      *
-     * @var \Illuminate\Routing\Router
+     * @var \Laralum\Routes\RoutesInfo
      */
-    protected $router;
+    protected $routesInfo;
 
     /**
-     * An array of all the registered routes.
-     *
-     * @var \Illuminate\Routing\RouteCollection
+     * RoutesController constructor.
      */
-    protected $routes;
-
-    /**
-     * Routes Facade constructor.
-     */
-    public function __construct(Router $router)
+    public function __construct(RoutesInfo $routesInfo)
     {
-        $this->router = $router;
-        $this->routes = $router->getRoutes();
+        $this->routesInfo = $routesInfo;
     }
 
     /**
@@ -41,53 +31,8 @@ class RoutesController extends Controller
      */
     public function routes()
     {
-        $routes = $this->getAll();
+        $routes = $this->routesInfo->getPaginatedRoutes();
 
         return view('laralum_routes::routes', ['routes' => $routes]);
-    }
-
-    /**
-     * Compile the routes into a displayable format.
-     *
-     * @return array
-     */
-    public function getAll()
-    {
-        $routes = collect($this->routes)->map(function ($route) {
-            return $this->getRouteInformation($route);
-        })->all();
-
-        return array_filter($routes);
-    }
-
-    /**
-     * Get the route information for a given route.
-     *
-     * @param  \Illuminate\Routing\Route  $route
-     * @return array
-     */
-    public function getRouteInformation(BaseRoute $route)
-    {
-        return new Route([
-            'host'   => $route->domain(),
-            'method' => implode('|', $route->methods()),
-            'uri'    => $route->uri(),
-            'name'   => $route->getName(),
-            'action' => $route->getActionName(),
-            'middleware' => $this->getRouteMiddleware($route),
-        ]);
-    }
-
-    /**
-     * Get before filters.
-     *
-     * @param  \Illuminate\Routing\Route  $route
-     * @return string
-     */
-    public function getRouteMiddleware($route)
-    {
-        return collect($route->gatherMiddleware())->map(function ($middleware) {
-            return $middleware instanceof Closure ? 'Closure' : $middleware;
-        })->implode(',');
     }
 }
