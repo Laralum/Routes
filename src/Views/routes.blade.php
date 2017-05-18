@@ -23,7 +23,7 @@
                                     <tr>
                                         <th>@lang('laralum_routes::general.name')</th>
                                         <th>@lang('laralum_routes::general.method')</th>
-                                        <th>@lang('laralum_routes::general.URI')</th>
+                                        <th>@lang('laralum_routes::general.uri')</th>
                                         <th>@lang('laralum_routes::general.action')</th>
                                         <th>@lang('laralum_routes::general.middleware')</th>
                                         <th>@lang('laralum_routes::general.host')</th>
