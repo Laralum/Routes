@@ -10,7 +10,8 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Laralum\Routes\Models\Route as LaralumRoute;
 
-class RoutesInfo {
+class RoutesInfo
+{
 	/**
      * The router instance.
      *

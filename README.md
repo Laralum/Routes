@@ -11,7 +11,7 @@
 </p>
 
 ## Description
-
+The routes package enables you to view ANY route registered in your app, to have an overview of all routes in a single view.
 
 
 ## Documentation
