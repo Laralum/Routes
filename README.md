@@ -3,7 +3,7 @@
 <h1 align="center">Routes</h1>
 
 <p align="center">
-<a href="https://styleci.io/repos/86605593"><img src="https://styleci.io/repos/86605593/shield?style=flat&branch=master" alt="StyleCI"></a>
+<a href="https://styleci.io/repos/91580850"><img src="https://styleci.io/repos/91580850/shield?style=flat&branch=master" alt="StyleCI"></a>
 <a href="https://github.com/laralum"><img src="https://img.shields.io/badge/Built%20For-Laralum-orange.svg" alt="Laralum"></a>
 <a href="https://github.com/laralum/Routes"><img src="https://poser.pugx.org/laralum/routes/d/total.svg" alt="Downloads"></a>
 <a href="https://github.com/Laralum/Routes/releases"><img src="https://poser.pugx.org/laralum/routes/v/stable.svg" alt="License"></a>
