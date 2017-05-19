@@ -2,11 +2,11 @@
 
 namespace Laralum\Routes;
 
-use Laralum\Routes\Models\Route;
 use Illuminate\Support\Facades\Gate;
-use Laralum\Routes\Policies\RoutePolicy;
 use Illuminate\Support\ServiceProvider;
 use Laralum\Permissions\PermissionsChecker;
+use Laralum\Routes\Models\Route;
+use Laralum\Routes\Policies\RoutePolicy;
 
 class RoutesServiceProvider extends ServiceProvider
 {

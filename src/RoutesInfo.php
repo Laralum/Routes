@@ -3,19 +3,19 @@
 namespace Laralum\Routes;
 
 use Closure;
-use Illuminate\Support\Arr;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Arr;
 use Laralum\Routes\Models\Route as LaralumRoute;
 
 class RoutesInfo
 {
-	/**
+    /**
      * The router instance.
      *
- 	 * @var \Illuminate\Routing\Router
+     * @var \Illuminate\Routing\Router
      */
     protected $router;
 
@@ -25,8 +25,8 @@ class RoutesInfo
      * @var \Illuminate\Routing\RouteCollection
      */
     protected $routes;
-   
- 	/**
+
+    /**
      * RoutesInfo constructor.
      */
     public function __construct(Router $router)
@@ -34,11 +34,12 @@ class RoutesInfo
         $this->router = $router;
         $this->routes = $router->getRoutes();
     }
-	
-	/**
+
+    /**
      * Compile the routes into a displayable format.
      *
-     * @param  string $sort
+     * @param string $sort
+     *
      * @return \Illuminate\Support\Collection
      */
     public function getAllRoutes($sort = null)
@@ -57,8 +58,9 @@ class RoutesInfo
     /**
      * Get paginated Routes.
      *
-     * @param  string $sort
-     * @param  int $perPage
+     * @param string $sort
+     * @param int    $perPage
+     *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
     public function getPaginatedRoutes($sort = 'name', $perPage = null)
@@ -71,17 +73,18 @@ class RoutesInfo
     /**
      * Get the route information for a given route.
      *
-     * @param  \Illuminate\Routing\Route as BaseRoute $route
+     * @param \Illuminate\Routing\Route as BaseRoute $route
+     *
      * @return \Laralum\Routes\Models\Route
      */
     public function getRouteInformation(Route $route)
     {
         return new LaralumRoute([
-            'host'   => $route->domain(),
-            'method' => implode('|', $route->methods()),
-            'uri'    => $route->uri(),
-            'name'   => $route->getName(),
-            'action' => $route->getActionName(),
+            'host'       => $route->domain(),
+            'method'     => implode('|', $route->methods()),
+            'uri'        => $route->uri(),
+            'name'       => $route->getName(),
+            'action'     => $route->getActionName(),
             'middleware' => $this->getRouteMiddleware($route),
         ]);
     }
@@ -89,8 +92,9 @@ class RoutesInfo
     /**
      * Sort the routes by a given element.
      *
-     * @param  string  $sort
-     * @param  array  $routes
+     * @param string $sort
+     * @param array  $routes
+     *
      * @return array
      */
     protected function sortRoutes($sort, $routes)
@@ -103,7 +107,8 @@ class RoutesInfo
     /**
      * Get before filters.
      *
-     * @param  \Illuminate\Routing\Route  $route
+     * @param \Illuminate\Routing\Route $route
+     *
      * @return string
      */
     public function getRouteMiddleware($route)
@@ -115,28 +120,30 @@ class RoutesInfo
 
     /**
      * Paginate a laravel colletion or array of items.
-     * 
-     * @param  array $items
-     * @param  int $perPage
-     * @param  string $pageName
-     * @param  int|null $page
+     *
+     * @param array    $items
+     * @param int      $perPage
+     * @param string   $pageName
+     * @param int|null $page
+     *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    function paginate($items, $perPage = null, $pageName = 'page', $page = null)
+    public function paginate($items, $perPage = null, $pageName = 'page', $page = null)
     {
-        if (is_array($items))
+        if (is_array($items)) {
             $items = collect($items);
+        }
 
         $page = $page ?: Paginator::resolveCurrentPage($pageName);
 
         $perPage = $perPage ?: $items[0]->getPerPage();
 
-        $results = $items->forPage(Paginator::resolveCurrentPage() , $perPage);
+        $results = $items->forPage(Paginator::resolveCurrentPage(), $perPage);
 
         $total = $items->count();
 
         return new LengthAwarePaginator($results, $total, $perPage, $page, [
-            'path' => Paginator::resolveCurrentPath(),
+            'path'     => Paginator::resolveCurrentPath(),
             'pageName' => $pageName,
         ]);
     }

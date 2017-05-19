@@ -8,8 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'home'			=> 'Inicio',
-    'name'        	=> 'Nombre',
-    'routes'    	=> 'Rutas',
-    'routes_desc'	=> 'Ver rutas de aplicación',
+    'home'            => 'Inicio',
+    'name'            => 'Nombre',
+    'routes'          => 'Rutas',
+    'routes_desc'     => 'Ver rutas de aplicación',
 ];
