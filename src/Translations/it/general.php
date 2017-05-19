@@ -8,8 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'home'			=> 'Casa',
-    'name'       	=> 'Nome',
-    'routes'		=> 'itinerari',
-    'routes_desc'	=> 'Visualizza i percorsi di applicazione',
+    'home'            => 'Casa',
+    'name'            => 'Nome',
+    'routes'          => 'itinerari',
+    'routes_desc'     => 'Visualizza i percorsi di applicazione',
 ];

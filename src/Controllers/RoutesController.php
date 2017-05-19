@@ -2,10 +2,8 @@
 
 namespace Laralum\Routes\Controllers;
 
-use Illuminate\Http\Request;
-use Laralum\Routes\RoutesInfo;
-use Laralum\Routes\Models\Route;
 use App\Http\Controllers\Controller;
+use Laralum\Routes\RoutesInfo;
 
 class RoutesController extends Controller
 {
